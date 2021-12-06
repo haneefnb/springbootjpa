@@ -2,8 +2,6 @@ package com.tipsol.springbootjpa.services.product;
 
 import java.util.List;
 
-import javax.websocket.server.PathParam;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,7 +24,7 @@ public class ProductController {
 	ModelMapper mapper;
 
 	@Autowired
-	ProductServiceImpl productService;
+	ProductService productService;
 	
 
 	@GetMapping("/products")
@@ -96,6 +94,18 @@ public class ProductController {
 		productService.getProductById(id);
 		returnValue = new ResponseEntity<Object>(new SuccessResponse("SUCCESS", "Deletion Successful"), HttpStatus.OK);
 
+		return returnValue;
+	}
+	
+	@GetMapping("/product/email/{div}")
+	public ResponseEntity<Object> sendEmail(@PathVariable("div") int div) {
+		ResponseEntity<Object> returnValue = null;
+		productService.sendEmail(div);
+		returnValue = new ResponseEntity<Object>
+			(new SuccessResponse("SUCCESS", "Email Sent Successfully "+
+		Thread.currentThread().getName()),
+					HttpStatus.OK);
+		
 		return returnValue;
 	}
 

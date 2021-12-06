@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -65,6 +66,19 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void deleteProductById(Long id) {
 		repository.deleteById(id);
+	}
+	
+	@Async
+	public void sendEmail(int i)  {
+		try {
+			Thread.sleep(10000);
+			// Wontedly throwing an exception, so this will be caught
+			int j = 10/i;
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println("----Mail Sent Successfully--------"
+				+ ""+Thread.currentThread().getName());
 	}
 
 }
