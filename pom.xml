@@ -75,6 +75,20 @@
 			<version>2.3.5</version>
 		</dependency>
 	</dependencies>
+	
+	 <repositories>
+        <repository>
+            <id>myMavenRepo.read</id>
+            <url>https://mymavenrepo.com/repo/QnwSQKla4X4WYBoyDVuP/</url>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>myMavenRepo.write</id>
+            <url>https://mymavenrepo.com/repo/Q6NtfuAn1HPT51uf1UBf/</url>
+        </repository>
+    </distributionManagement>
 
 	<build>
 		<plugins>
