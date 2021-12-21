@@ -16,7 +16,7 @@ public class SpringbootjpaApplication implements ApplicationRunner{
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootjpaApplication.class, args);
-		System.out.println("----Started1------");
+		System.out.println("----Started2------");
 	}
 	
 	@Bean
