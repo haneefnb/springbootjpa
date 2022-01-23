@@ -14,14 +14,14 @@ import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
 @Configuration
 public class AcceptHeaderResolver extends AcceptHeaderLocaleResolver{
 	
-	List<Locale> LOCALES = Arrays.asList(new Locale("en"), 
+	List<Locale> LOCALE_LIST = Arrays.asList(new Locale("en"), 
 			new Locale("ar"));
 	
 	@Override
 	public Locale resolveLocale(HttpServletRequest request) {
 		String header = request.getHeader("Accept-Language");
 		return header == null || header.isEmpty() ? Locale.getDefault():
-			Locale.lookup(Locale.LanguageRange.parse(header), LOCALES);
+			Locale.lookup(Locale.LanguageRange.parse(header), LOCALE_LIST);
 	}
 	
 	@Bean

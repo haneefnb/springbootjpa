@@ -1,4 +1,4 @@
-package com.tipsol.springbootjpa.services;
+package com.tipsol.springbootjpa.commondto;
 
 import lombok.Data;
 

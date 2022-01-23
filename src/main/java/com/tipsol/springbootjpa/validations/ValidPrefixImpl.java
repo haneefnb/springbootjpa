@@ -1,4 +1,4 @@
-package com.tipsol.springbootjpa.customvalidations;
+package com.tipsol.springbootjpa.validations;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

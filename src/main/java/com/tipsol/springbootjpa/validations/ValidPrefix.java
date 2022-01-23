@@ -1,4 +1,4 @@
-package com.tipsol.springbootjpa.customvalidations;
+package com.tipsol.springbootjpa.validations;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

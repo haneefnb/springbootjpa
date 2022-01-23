@@ -13,8 +13,10 @@ public interface ProductService {
 	
 	public Product getProductById(Long id);
 	
+	public ProductDao getProductByName(String name);
+	
 	public void deleteProductById(Long id);
 	
-	public void sendEmail(int i);
+	public void sendEmail(int i) throws InterruptedException;
 	
 }

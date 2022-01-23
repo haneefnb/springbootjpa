@@ -3,6 +3,7 @@ package com.tipsol.springbootjpa.exception;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 
 import org.springframework.http.HttpStatus;
@@ -19,9 +20,9 @@ public class ValidationExceptionHandler {
 
 	
 	@ExceptionHandler(value = { ConstraintViolationException.class })
-	public ResponseEntity<?> handlePrefixInValidException(ConstraintViolationException e, WebRequest request) {
+	public ResponseEntity<Object> handlePrefixInValidException(ConstraintViolationException e, WebRequest request) {
 		
-		List<String> messages =  e.getConstraintViolations().parallelStream().map(x->x.getMessage()).collect(Collectors.toList());
+		List<String> messages =  e.getConstraintViolations().parallelStream().map(ConstraintViolation::getMessage).collect(Collectors.toList());
 		
 		ErrorInfo error = new ErrorInfo("ERR2",messages);
 		
@@ -30,7 +31,7 @@ public class ValidationExceptionHandler {
 	
 	
 	@ExceptionHandler(value = { MethodArgumentNotValidException.class })
-	public ResponseEntity<?> handleException(MethodArgumentNotValidException e, WebRequest request) {
+	public ResponseEntity<Object> handleException(MethodArgumentNotValidException e, WebRequest request) {
 		
 		List<String> errorMessages = e.getBindingResult().
 				getAllErrors().stream().

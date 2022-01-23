@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tipsol.springbootjpa.services.ErrorResponse;
-import com.tipsol.springbootjpa.services.SuccessResponse;
+import com.tipsol.springbootjpa.common.TipsolConstants;
+import com.tipsol.springbootjpa.commondto.ErrorResponse;
+import com.tipsol.springbootjpa.commondto.SuccessResponse;
 
 @RestController
 public class ProductController {
@@ -25,7 +26,6 @@ public class ProductController {
 
 	@Autowired
 	ProductService productService;
-	
 
 	@GetMapping("/products")
 	public ResponseEntity<Object> getProducts() {
@@ -45,9 +45,9 @@ public class ProductController {
 		ResponseEntity<Object> returnValue = null;
 		Product product = productService.createProduct(p);
 		if (product != null) {
-			returnValue = new ResponseEntity<Object>(product, HttpStatus.CREATED);
+			returnValue = new ResponseEntity<>(product, HttpStatus.CREATED);
 		} else {
-			returnValue = new ResponseEntity<Object>(new ErrorResponse("ERROR", "Unabe To Create"), HttpStatus.CREATED);
+			returnValue = new ResponseEntity<>(new ErrorResponse(TipsolConstants.ERROR, TipsolConstants.UNABLE_TO_CREATE), HttpStatus.CREATED);
 		}
 
 		return returnValue;
@@ -58,16 +58,12 @@ public class ProductController {
 		ResponseEntity<Object> returnValue = null;
 		Product product = null;
 
-		if (p.getId() == null) {
-			product = productService.createProduct(p);
-		} else {
-			product = productService.createProduct(p);
-		}
+		product = productService.createProduct(p);
 
 		if (product != null) {
-			returnValue = new ResponseEntity<Object>(product, HttpStatus.CREATED);
+			returnValue = new ResponseEntity<>(product, HttpStatus.CREATED);
 		} else {
-			returnValue = new ResponseEntity<Object>(new ErrorResponse("ERROR", "Unabe To Create"), HttpStatus.CREATED);
+			returnValue = new ResponseEntity<>(new ErrorResponse(TipsolConstants.ERROR, TipsolConstants.UNABLE_TO_CREATE), HttpStatus.CREATED);
 		}
 
 		return returnValue;
@@ -79,9 +75,9 @@ public class ProductController {
 
 		Product product = productService.getProductById(id);
 		if (product != null) {
-			returnValue = new ResponseEntity<Object>(product, HttpStatus.CREATED);
+			returnValue = new ResponseEntity<>(product, HttpStatus.CREATED);
 		} else {
-			returnValue = new ResponseEntity<Object>(new ErrorResponse("ERROR", "Unabe To Create"), HttpStatus.CREATED);
+			returnValue = new ResponseEntity<>(new ErrorResponse(TipsolConstants.ERROR, TipsolConstants.UNABLE_TO_CREATE), HttpStatus.CREATED);
 		}
 
 		return returnValue;
@@ -92,20 +88,24 @@ public class ProductController {
 		ResponseEntity<Object> returnValue = null;
 
 		productService.getProductById(id);
-		returnValue = new ResponseEntity<Object>(new SuccessResponse("SUCCESS", "Deletion Successful"), HttpStatus.OK);
+		returnValue = new ResponseEntity<>(new SuccessResponse("SUCCESS", "Deletion Successful"), HttpStatus.OK);
 
 		return returnValue;
 	}
-	
+
 	@GetMapping("/product/email/{div}")
-	public ResponseEntity<Object> sendEmail(@PathVariable("div") int div) {
+	public ResponseEntity<Object> sendEmail(@PathVariable("div") int div) throws InterruptedException {
 		ResponseEntity<Object> returnValue = null;
-		productService.sendEmail(div);
-		returnValue = new ResponseEntity<Object>
-			(new SuccessResponse("SUCCESS", "Email Sent Successfully "+
-		Thread.currentThread().getName()),
-					HttpStatus.OK);
-		
+		try {
+			productService.sendEmail(div);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+			throw e;
+		}
+		returnValue = new ResponseEntity<>(
+				new SuccessResponse("SUCCESS", "Email Sent Successfully " + Thread.currentThread().getName()),
+				HttpStatus.OK);
+
 		return returnValue;
 	}
 
