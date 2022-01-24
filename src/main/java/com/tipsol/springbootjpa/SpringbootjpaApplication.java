@@ -16,7 +16,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
  * @author 1000475
  */
 @SpringBootApplication
-@EnableJpaAuditing
+//@EnableJpaAuditing
 @EnableAsync
 public class SpringbootjpaApplication implements ApplicationRunner {
 	

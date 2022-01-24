@@ -57,7 +57,7 @@ public class ProductServiceImpl implements ProductService {
 	public Product createProduct(Product product) {
 		ProductDao dao = mapper.map(product, ProductDao.class);
 		dao = repository.save(dao);
-		product  = mapper.map(dao, Product.class);
+		product = mapper.map(dao, Product.class);
 		return product;
 	}
 
