@@ -57,8 +57,8 @@ public class ProductControllerTests {
 		//Verify the response using Assert statements.
 		response
 			 .andDo(print())
-		     //.andExpect(status().isCreated())
-			 .andExpect(status().is4xxClientError())//Negative Test
+		     .andExpect(status().isCreated())
+			 //.andExpect(status().is4xxClientError())//Negative Test
 		     .andExpect(jsonPath("$.name",is(product.getName())));
 		
 	}
