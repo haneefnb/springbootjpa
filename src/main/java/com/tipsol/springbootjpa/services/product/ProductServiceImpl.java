@@ -64,10 +64,10 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public Product getProductById(Long id) {
 		Optional<ProductDao> prodOp = repository.findById(id);
-		if (prodOp.isPresent()) {
-			return mapper.map(prodOp.get(), Product.class);
-		}
-		return null;
+		// if (prodOp.isPresent()) { // Commented for Testing Sonar Qube
+			//return mapper.map(prodOp.get(), Product.class);
+		// }
+		return mapper.map(prodOp.get(), Product.class);
 	}
 
 	public ProductDao getProductByName(String name) {
