@@ -1,4 +1,4 @@
-package com.tipsol.springbootjpa.services.product;
+package com.tipsol.springbootjpa.dto;
 
 import java.time.LocalDate;
 

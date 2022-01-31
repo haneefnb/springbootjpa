@@ -1,4 +1,4 @@
-package com.tipsol.springbootjpa.services.product;
+package com.tipsol.springbootjpa.controller;
 
 import java.util.List;
 
@@ -12,13 +12,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tipsol.springbootjpa.common.TipsolConstants;
+import com.tipsol.springbootjpa.commonconstants.TipsolConstants;
 import com.tipsol.springbootjpa.commondto.ErrorResponse;
 import com.tipsol.springbootjpa.commondto.SuccessResponse;
+import com.tipsol.springbootjpa.dto.Product;
+import com.tipsol.springbootjpa.service.ProductService;
 
 @RestController
+@RequestMapping("/products")
 public class ProductController {
 
 	@Autowired
@@ -27,7 +31,7 @@ public class ProductController {
 	@Autowired
 	ProductService productService;
 
-	@GetMapping("/products")
+	@GetMapping("/")
 	public ResponseEntity<Object> getProducts() {
 		ResponseEntity<Object> returnValue = null;
 		List<Product> products = productService.fetchProducts();

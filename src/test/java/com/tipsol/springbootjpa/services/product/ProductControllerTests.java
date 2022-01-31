@@ -19,6 +19,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.tipsol.springbootjpa.dto.Product;
+import com.tipsol.springbootjpa.service.ProductService;
 
 @WebMvcTest
 public class ProductControllerTests {

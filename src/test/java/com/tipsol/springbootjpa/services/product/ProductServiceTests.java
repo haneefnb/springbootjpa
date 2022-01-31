@@ -11,7 +11,12 @@ import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.modelmapper.ModelMapper;
-import org.springframework.test.context.junit.jupiter.SpringExtension;;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import com.tipsol.springbootjpa.dao.ProductDao;
+import com.tipsol.springbootjpa.dto.Product;
+import com.tipsol.springbootjpa.repository.ProductRepository;
+import com.tipsol.springbootjpa.service.ProductServiceImpl;;
 
 
 @ExtendWith(SpringExtension.class)

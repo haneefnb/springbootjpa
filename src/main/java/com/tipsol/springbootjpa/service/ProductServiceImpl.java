@@ -1,4 +1,4 @@
-package com.tipsol.springbootjpa.services.product;
+package com.tipsol.springbootjpa.service;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -13,6 +13,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+
+import com.tipsol.springbootjpa.dao.ProductDao;
+import com.tipsol.springbootjpa.dto.Product;
+import com.tipsol.springbootjpa.repository.ProductRepository;
 
 @Service
 public class ProductServiceImpl implements ProductService {

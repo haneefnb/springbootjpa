@@ -1,4 +1,4 @@
-package com.tipsol.springbootjpa.common;
+package com.tipsol.springbootjpa.commonconstants;
 
 public class TipsolConstants {
 	

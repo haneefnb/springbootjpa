@@ -1,8 +1,11 @@
-package com.tipsol.springbootjpa.services.product;
+package com.tipsol.springbootjpa.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+
+import com.tipsol.springbootjpa.dao.ProductDao;
+import com.tipsol.springbootjpa.dto.Product;
 
 @Service
 public interface ProductService {

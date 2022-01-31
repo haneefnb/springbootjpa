@@ -1,4 +1,4 @@
-package com.tipsol.springbootjpa.interceptors;
+package com.tipsol.springbootjpa.interceptor;
 
 import java.util.Arrays;
 import java.util.List;
